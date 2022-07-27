@@ -1,8 +1,9 @@
 const { generarProductos } = require('../utils/generadorProductos');
 const mongoose = require('mongoose');
 const { mongoUri } = require ('../config/globals');
-const productoModel = require('../models/productosMongo');
+const prodModel = require('../models/productosMongo');
 
+let model = prodModel
 
 let iniciarMongo = mongoose.connect(`${mongoUri}`, {
     useNewUrlParser: true,

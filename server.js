@@ -6,13 +6,13 @@ const routerProd = require('./src/routes/productos');
 const UserModel = require('./src/models/usuariosMongo');
 const { PORT } = require ('./src/config/globals');
 const { TIEMPO_EXPIRACION } = require('./src/config/globals');
-const {validatePass} = require('./src/utils/passValidator');
-const {createHash} = require('./src/utils/hashGenerator');
+const { validatePass } = require('./src/utils/passValidator');
+const { createHash } = require('./src/utils/hashGenerator');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const iniciarMongo = require('./src/contenedor/contenedorMongoDB');
 const carrito = require('./src/routes/carrito');
-const infoNode = require('./src/models/infoSistema')
+const { infoNode } = require('./src/models/infoSistema')
 
 
 
@@ -132,7 +132,7 @@ app.get('/ruta-protegida', routerLog.checkAuthentication, (req, res) => {
 });
 
 //  FAIL ROUTE
-app.get('*', routerLog.failRoute);
+//app.get('*', routerLog.failRoute);
 
 // PRODUCTOS
 app.get('/productos', routerProd.verProductos);
