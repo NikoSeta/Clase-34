@@ -1,6 +1,6 @@
 //--DIRECCION MAIN
 function getRoot(req, res) {
-    res.render('index')
+    res.render('logg/main')
 }
 //--DIRECCION LOG IN
 function getLogin(req, res) {
@@ -36,7 +36,7 @@ function getProfile (req, res) {
         let user = req.user;
         res.render('logg/profileUser', { user: user, isUser:true })
     } else {
-        res.redirect('logg/logInForm')
+        res.redirect('login')
     }
 }
 //--DIRECCION DE FALLA LOG IN

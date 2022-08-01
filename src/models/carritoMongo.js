@@ -1,14 +1,14 @@
 const mongoose = require ("mongoose");
 
-const productosCollection = 'productos';
+const carritoCollection = 'carrito';
 
-const productosSchema = new mongoose.Schema({
+const carritoSchema = new mongoose.Schema({
     name: {type: String, required: true, max: 100},
     price: {type: Number, required: true},
     img: {type: String, required: true},
     stock: {type: Number, required: true}
 });
 
-const prodModel = mongoose.model(productosCollection, productosSchema);
+const cartModel = mongoose.model(carritoCollection, carritoSchema);
 
-module.exports = prodModel
+module.exports = cartModel;

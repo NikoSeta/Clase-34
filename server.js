@@ -12,15 +12,15 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const iniciarMongo = require('./src/contenedor/contenedorMongoDB');
 const carrito = require('./src/routes/carrito');
-const { infoNode } = require('./src/models/infoSistema')
-
-
+const { infoNode } = require('./src/models/infoSistema');
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + "/partial"));
+
+iniciarMongo
 
 //--INICIAR SESSION
 app.use(session({
@@ -42,7 +42,7 @@ app.use(passport.session())
 passport.use('login', new LocalStrategy(
     //--paramatros user, pass, function callback
     (username, password, callback) => {
-        iniciarMongo
+        
         UserModel.findOne({ username: username }, (err, user) => {
             if (err) {
                 return callback(err)
@@ -109,7 +109,7 @@ passport.deserializeUser((id, callback) => {
 
 
 //  INDEX
-app.get('/', routerLog.getRoot);
+app.get('/session', routerLog.getRoot);
 
 //  LOGIN
 app.get('/login', routerLog.getLogin);
@@ -135,10 +135,22 @@ app.get('/ruta-protegida', routerLog.checkAuthentication, (req, res) => {
 //app.get('*', routerLog.failRoute);
 
 // PRODUCTOS
-app.get('/productos', routerProd.verProductos);
+app.get('/productos', (req, res) =>{
+    console.log()});
+
+app.get('/', routerProd.productosPrincipal);
 
 // CARRITO
-app.get('/carrito', carrito.verCarrito);
+app.get('/cart', carrito.verCarrito);
+
+app.post('/prod-cart')
+
+app.put('/prod-cart:productId')
+
+app.delete('/prod-cart:productId')
+
+//MENSAJERÍA    
+app.get('/chat')
 
 // INFO SISTEMA
 app.get('/info', (req, res)=>{
@@ -149,3 +161,5 @@ const server = app.listen(PORT, () => {
     console.log(`Ir a la página http://localhost:${PORT}`);
 });
 server.on('error', error => console.log(`Error en el servidor ${error}`))
+
+module.exports = { app };

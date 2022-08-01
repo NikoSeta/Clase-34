@@ -1,19 +1,19 @@
-const ContenedorMongoDB = require('../contenedor/contenedorMongoDB')
-const { generarProductos } = require('../utils/generadorProductos')
+const ContenedorMongoDB = require('../contenedor/contenedorMongoDB');
+const { generarProductos } = require('../utils/generadorProductos');
+const productosModel = require('../models/productosMongo');
 
 class ProductosMock extends ContenedorMongoDB {
     constructor() {
-        super('src/data/productos.json');
+        super(productosModel);
     }
     popular(cant = 5) {
-        const nuevosProductos = [];
-
+        const newProd = []
         for (let index = 0; index < cant; index++) {
-            const nuevosProductos = generarProductos();
-            nuevosProductos.push(nuevoProducto);
+            const nuevosProd = generarProductos(this.update())
+            newProd.insert(nuevosProd);
         }
-        this.guardar(nuevosProductos);
-        return nuevosProductos;
+        this.update(nuevosProd);
+        return nuevosProd;
     }
-}
+};
 module.exports = ProductosMock;

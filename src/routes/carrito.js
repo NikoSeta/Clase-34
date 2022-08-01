@@ -1,8 +1,10 @@
+const carritoMongo = require('../models/carritoMongo');
 
-let carrito = []
+
 
 function verCarrito(req, res){
-    res.render('carrito', {carrito:carrito})
+    let carrito = []
+    res.render('product/carrito', {carrito:carrito})
 }
 
 module.exports = {

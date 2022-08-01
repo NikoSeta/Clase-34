@@ -14,7 +14,7 @@
     
     <form class="form" role="form" action="/signup" method="post" autocomplete="off">
       <div class="form-group">
-        <label for="user name" class="form-label">User Name</label>
+        <label for="user name" class="form-label">Nombre de Usuario</label>
         <input name='username' class="form-control" type="text" required>
       </div>
       <div class="form-group">
@@ -22,6 +22,8 @@
         <input name='password' class="form-control" type="password" required>
       </div>
       <br>
+      <hr>
+      <h5 style="text-align: center;"><b>Datos personales</b></h5>
       <div class="form-group">
         <label for="nombre" class="form-label">Nombre</label>
         <input name='firstname' class="form-control" type="text" required>
@@ -36,12 +38,25 @@
         <label for="email" class="form-label">Email</label>
         <input name='email' class="form-control" type="email" required>
       </div>
+
+      <div class="form-group">
+        <label for="telefono" class="form-label">Teléfono</label>
+        <input name='telefono' class="form-control" type="telefono" required>
+      </div>
+
+      <div class="form-group">
+        <section id="app" class="container"></section>
+        <label for="telefono" class="form-label">Fecha nacimiento</label>
+        <input name='date' class="form-control" type="date" required>
+      </div>
   
       <div class="form-group">
         <input class="btn btn-warning my-3" type="submit" value="Sign up">
       </div>
     </form>
+
     <hr>
+
     <form action="/">
       <div class="text-center"></div>
           <button class="btn btn-success my-3">Back to home</button>

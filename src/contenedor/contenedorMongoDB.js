@@ -2,7 +2,6 @@ const { generarProductos } = require('../utils/generadorProductos');
 const mongoose = require('mongoose');
 const { mongoUri } = require ('../config/globals');
 const prodModel = require('../models/productosMongo');
-
 let model = prodModel
 
 let iniciarMongo = mongoose.connect(`${mongoUri}`, {
@@ -41,10 +40,10 @@ class ContenedorMongoDB {
         return content;
     }
 
-    async upgrade(content) {
+    async update(content) {
         let contentArray = this.getAll();
         
-        let index = contentArray.findIndex(elem => {
+        let index = contentArray.find(elem => {
             return elem.id === content.id;
         });
 
@@ -52,7 +51,8 @@ class ContenedorMongoDB {
             let usuarioUpdate = await model.usuarios.updateOne(
                 {name: content.name},
                 {price: content.price},
-                {img: content.img}
+                {img: content.img},
+                {stock: content.stock}
             );
             console.log(usuarioUpdate);
         }

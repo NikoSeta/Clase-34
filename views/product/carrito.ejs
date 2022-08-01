@@ -1,8 +1,17 @@
-<%- include('../partial/header.ejs') %>
+<%- include('../partials/header.ejs') %>
+<div class="container">
+    <h3 style="
+    color:#ffc107; 
+    background-color: #212529; 
+    padding-bottom: 8px;
+    margin-top: 20px;
+    border-radius: 10px;
+    text-align: center;">Carrito</h3>
+</div>
 
 <% if (carrito.length > 0){ %> 
-    <h3>Carrito</h3>
-    <%for(carrito of carrito){ %>
+    
+    <% carritoSinDuplicados.forEach((carrito) => { %>
     <div class="container">
         <div class="row">
             <div class="col">
@@ -20,10 +29,13 @@
         </div>
         <hr>
     </div>
-    <% } %>
+    <% }) %>
 <% } else { %>
-    <p class="aler alert-warning">No hay productos en el carrito</p>
+    <div class="container">
+        <h5 class="aler alert-warning" style="text-align: center; padding: 15px;">No hay productos en el carrito</h5>
+    </div>
+    
 <% } %>
 
-<%- include('../partial/footer.ejs') %>
+<%- include('../partials/footer.ejs') %>
 
